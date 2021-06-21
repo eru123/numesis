@@ -1,6 +1,6 @@
 {
   "name": "numesis",
-  "version": "0.1.01",
+  "version": "1.0.0",
   "description": "Custom Number System",
   "main": "mod.js",
   "scripts": {
