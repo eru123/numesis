@@ -1,0 +1,28 @@
+{
+  "name": "numesis",
+  "version": "0.1.01",
+  "description": "Custom Number System",
+  "main": "mod.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "number",
+    "numbers",
+    "system",
+    "numesis",
+    "numesys",
+    "numbersys",
+    "numbersis",
+    "theory",
+    "base",
+    "numerals",
+    "numeral",
+    "create",
+    "custom"
+  ],
+  "author": "eru123",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/eru123/numesis",
+  "private": false
+}
