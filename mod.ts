@@ -25,28 +25,6 @@ class Numesis {
 		}
 		return this.ep(n)
 	}
-	private dp(e:string): number {
-		if(e.length == 0) return NaN;
-		let d = 0;
-		const y: string[] = e.split("")
-		const yl: number = y.length
-		const {a,l} = this.c
-		const find = (l:string) :number => a.findIndex(e => e == l)
-		const zeros = (z: number) : number => {
-			let zr: string = "";
-			for(let zi = 0;zi < z;zi++) zr += "0"
-			return Number("1" + zr)
-		}
-		for(let i =0;i < yl;i++) d += i==yl-1?find(y[i]):find(y[i])*(l*zeros(yl-i-2))
-		return d;
-	}
-	d(e:string): number {
-		if(e.includes(".")) {
-			const st = e.split(".")
-			return Number(`${this.dp(st[0] || "")}.${this.dp(st[1] || "")}`)
-		}
-		return this.dp(e)
-	}
 }
 
 export default Numesis;

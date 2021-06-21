@@ -25,30 +25,6 @@ class Numesis {
         }
         return this.ep(n);
     }
-    dp(e) {
-        if (e.length == 0) return NaN;
-        let d = 0;
-        const y = e.split("");
-        const yl = y.length;
-        const { a , l  } = this.c;
-        const find = (l1)=>a.findIndex((e)=>e == l1
-            )
-        ;
-        const zeros = (z)=>{
-            let zr = "";
-            for(let zi = 0; zi < z; zi++)zr += "0";
-            return Number("1" + zr);
-        };
-        for(let i = 0; i < yl; i++)d += i == yl - 1 ? find(y[i]) : find(y[i]) * (l * zeros(yl - i - 2));
-        return d;
-    }
-    d(e) {
-        if (e.includes(".")) {
-            const st = e.split(".");
-            return Number(`${this.dp(st[0] || "")}.${this.dp(st[1] || "")}`);
-        }
-        return this.dp(e);
-    }
 }
 
 module.exports = Numesis;
