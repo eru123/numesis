@@ -1,10 +1,11 @@
 {
   "name": "numesis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Custom Number System",
   "main": "mod.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "deno-test": "deno run test.ts"
   },
   "keywords": [
     "number",
@@ -18,8 +19,11 @@
     "base",
     "numerals",
     "numeral",
-    "create",
-    "custom"
+    "hex",
+    "hexadecimal",
+    "decimal",
+    "binary",
+    "octal"
   ],
   "author": "eru123",
   "license": "Apache-2.0",
