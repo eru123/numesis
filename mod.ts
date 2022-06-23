@@ -1,6 +1,11 @@
 /**
  * @class Numesis
  * Create custom Number System
+ * Compatible with:
+ * - Deno
+ * - NodeJS
+ * - Browser
+ * - Typescript
  * @author Jericho Aquino
  * @version 1.0.2
  * @license Apache-2.0
@@ -50,7 +55,7 @@
      * A public method that encodes n paramenter to custom number system
      * @param {number|string} args numbers that will be decoded
      *
-     * @return {String} joined of array encoded string
+     * @return {String} encoded string
      */
     encode(...args: Array<number | string>): string {
         return args
@@ -72,3 +77,5 @@
      */
     e: Function = this.encode.bind(this)
 }
+
+export default Numesis
