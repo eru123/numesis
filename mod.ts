@@ -12,7 +12,7 @@
  * @see {@link https://github.com/eru123/numesis} Github Repository
  * @see {@link https://www.npmjs.com/package/numesis} NPM Package
  */
- class Numesis {
+class Numesis {
     /**
      * A non-duplicate character set, that will be use in creating new number system
      * @type {Set<string>}
@@ -20,7 +20,7 @@
     public readonly charset: Array<string>;
 
     /**
-     * @param {String} chartset A non-duplicate character set, that will be use in creating new number system
+     * @param {string} chartset A non-duplicate character set, that will be use in creating new number system
      */
     constructor(chartset: string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") {
         // Recreate an array of characters without duplicates
@@ -32,7 +32,7 @@
      * @param {number|string} number    The number that will be decoded
      * @param {string} current    The current string in the recursion
      *
-     * @return {String} encoded string
+     * @return {string} encoded string
      */
     private encode_process(number: number | string, current = ""): string {
         number = parseInt("" + number)                      // Convert to integer
@@ -49,13 +49,13 @@
     /**
      * Alias for encode_process
      */
-    ep: Function = this.encode_process
+    ep = this.encode_process
 
     /**
      * A public method that encodes n paramenter to custom number system
      * @param {number|string} args numbers that will be decoded
      *
-     * @return {String} encoded string
+     * @return {string} encoded string
      */
     encode(...args: Array<number | string>): string {
         return args
@@ -75,7 +75,7 @@
     /**
      * Alias for encode
      */
-    e: Function = this.encode.bind(this)
+    e = this.encode.bind(this)
 }
 
 export default Numesis
