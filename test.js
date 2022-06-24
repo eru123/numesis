@@ -5,15 +5,11 @@ async function test(s) {
     return new Promise((resolve) => {
         let te, ts = Date.now()
         let de = []
-        var run = true
-
-        for (let i = 0; run; i++) {
-            de.push(n.e(i))
+        let i = 0;
+        while (true) {
+            de.push(n.e(i++))
             te = Date.now()
-            if (te - ts >= s * 1000) {
-                run = false;
-                return resolve({ start: ts, end: te, id: de })
-            }
+            if (te - ts >= s * 1000) return resolve({ start: ts, end: te, id: de })
         }
     });
 }
