@@ -3,13 +3,18 @@ const Numesis = require('./mod')
 async function test(s) {
     const n = new Numesis();
     return new Promise((resolve) => {
-        let te, ts = Date.now()
-        let de = []
+        let te;
+        const ts = Date.now();
+        const de = [];
         let i = 0;
         while (true) {
-            de.push(n.e(i++))
-            te = Date.now()
-            if (te - ts >= s * 1000) return resolve({ start: ts, end: te, id: de })
+            de.push(n.e(i++));
+            te = Date.now();
+            if (te - ts >= s * 1000) return resolve({
+                start: ts,
+                end: te,
+                id: de
+            });
         }
     });
 }
