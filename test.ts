@@ -8,8 +8,12 @@ async function test(s: number): Promise<{
 }> {
 	const n = new Numesis();
 	return new Promise((resolve) => {
+<<<<<<< HEAD
 		let te;
 		const ts = Date.now()
+=======
+		let te, ts = Date.now()
+>>>>>>> e33574d8e1d432ee6b3ca33c535b4c1130751fa6
         const de: string[] = []
         let i = 0;
         while (true) {
