@@ -2,21 +2,17 @@ const Numesis = require('./mod')
 
 async function test(s) {
     const n = new Numesis();
-    return new Promise((resolve)=>{
-        let ts = Date.now();
-        let te = Date.now();
-        let de = [];
-        var stop = false;
-        for(let i = 0; !stop; i++){
-            de.push(n.e(i));
-            te = Date.now();
+    return new Promise((resolve) => {
+        let te, ts = Date.now()
+        let de = []
+        var run = true
+
+        for (let i = 0; run; i++) {
+            de.push(n.e(i))
+            te = Date.now()
             if (te - ts >= s * 1000) {
-                stop = true;
-                return resolve({
-                    start: ts,
-                    end: te,
-                    id: de
-                });
+                run = false;
+                return resolve({ start: ts, end: te, id: de })
             }
         }
     });
@@ -24,20 +20,20 @@ async function test(s) {
 async function average(s) {
     const id = [];
     const dup = [];
-    for(let i = 0; i < s; i++){
-        await test(1).then(({ id: e  })=>{
+    for (let i = 0; i < s; i++) {
+        await test(1).then(({ id: e }) => {
             id.push(e.length);
             dup.push(e.length - new Set(e).size);
         });
     }
-    const avg = id.reduce((a, b)=>a + b, 0) / id.length;
-    const avgDup = dup.reduce((a, b)=>a + b, 0) / dup.length;
+    const avg = id.reduce((a, b) => a + b, 0) / id.length;
+    const avgDup = dup.reduce((a, b) => a + b, 0) / dup.length;
     console.log(`\n=====================================================`);
     console.log("Average ID's:", ~~avg, "/s");
     console.log(`Average duplicated ID's: ${~~avgDup}/s`);
     console.log(`Elapsed time: ${s}s`);
 }
-test(1).then((e)=>{
+test(1).then((e) => {
     console.log(`\n=====================================================`);
     console.log("Average Generated ID's \t\t\t:", e?.id?.length);
     console.log("Average Duplicated ID's \t\t:", e?.id?.length - new Set(e?.id).size);

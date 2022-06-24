@@ -8,16 +8,15 @@ async function test(s: number): Promise<{
 }> {
 	const n = new Numesis();
 	return new Promise((resolve) => {
-		let ts = Date.now()
-		let te = Date.now()
+		let te, ts = Date.now()
 		let de: string[] = []
-		var stop = false
+		var run = true
 
-		for (let i = 0; !stop; i++) {
+		for (let i = 0; run; i++) {
 			de.push(n.e(i))
 			te = Date.now()
 			if (te - ts >= s * 1000) {
-				stop = true;
+				run = false;
 				return resolve({ start: ts, end: te, id: de })
 			}
 		}
