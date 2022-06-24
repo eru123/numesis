@@ -9,7 +9,7 @@ async function test(s: number): Promise<{
 	const n = new Numesis();
 	return new Promise((resolve) => {
 		let te, ts = Date.now()
-        let de: String[] = []
+        const de: string[] = []
         let i = 0;
         while (true) {
             de.push(n.e(i++))
