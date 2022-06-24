@@ -1,3 +1,4 @@
+[![DeepScan grade](https://deepscan.io/api/teams/18125/projects/21443/branches/616385/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=18125&pid=21443&bid=616385)
 # numesis
 Custom Number System
 
