@@ -126,6 +126,14 @@ class Numesis {
      * Alias for decode
      */
     public d = this.decode;
+
+    public encode_trail(len: number, ...args: Array<number | string>): string {
+        const encoded = this.encode(...args);
+        return encoded.length > len ? encoded : encoded.padStart(len, this.charset[0]);
+    }
+
+    public trail = this.encode_trail;
+    public t = this.encode_trail;
 }
 
 export default Numesis
