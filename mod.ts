@@ -17,27 +17,27 @@ class Numesis {
     /**
      * Binary character set - 01
      */
-    static BIN = '01';
+    public static readonly BIN = '01';
 
     /**
      * Octal character set - 01234567
      */
-    static OCT = '01234567';
+    public static readonly OCT = '01234567';
 
     /**
      * Decimal character set - 0123456789
      */
-    static DEC = '0123456789';
+    public static readonly DEC = '0123456789';
 
     /**
      * Hexadecimal character set - 0123456789ABCDEF
      */
-    static HEX = '0123456789ABCDEF';
+    public static readonly HEX = '0123456789ABCDEF';
 
     /**
      * Default character set - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
      */
-    static DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    public static readonly DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     /**
      * A non-duplicate character set, that will be use in creating new number system
@@ -75,7 +75,7 @@ class Numesis {
     /**
      * Alias for encode_process
      */
-    ep = this.encode_process
+    private ep = this.encode_process
 
     /**
      * A public method that encodes n paramenter to custom number system
