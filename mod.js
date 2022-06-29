@@ -55,7 +55,6 @@ class Numesis {
      */
     constructor(charset = Numesis.DEFAULT) {
         // Recreate an array of characters without duplicates
-        console.log(charset)
         this.charset = Array.from(new Set(String(charset).split("")))
     }
 
