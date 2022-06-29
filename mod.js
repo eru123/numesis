@@ -16,23 +16,23 @@ class Numesis {
     /**
      * Binary character set - 01
      */
-     static BIN = '01';
-     /**
-      * Octal character set - 01234567
-      */
-     static OCT = '01234567';
-     /**
-      * Decimal character set - 0123456789
-      */
-     static DEC = '0123456789';
-     /**
-      * Hexadecimal character set - 0123456789ABCDEF
-      */
-     static HEX = '0123456789ABCDEF';
-     /**
-      * Default character set - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-      */
-     static DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    static BIN = '01';
+    /**
+     * Octal character set - 01234567
+     */
+    static OCT = '01234567';
+    /**
+     * Decimal character set - 0123456789
+     */
+    static DEC = '0123456789';
+    /**
+     * Hexadecimal character set - 0123456789ABCDEF
+     */
+    static HEX = '0123456789ABCDEF';
+    /**
+     * Default character set - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+     */
+    static DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     /**
      * A non-duplicate character set, that will be use in creating new number system
      * @type {Set<string>}
@@ -41,7 +41,7 @@ class Numesis {
     /**
      * @param {String} chartset A non-duplicate character set, that will be use in creating new number system
      */
-    constructor(chartset = Numesis.DEFAULT){
+    constructor(chartset = Numesis.DEFAULT) {
         this.charset = Array.from(new Set(chartset.split("")));
     }
     /**
@@ -73,7 +73,7 @@ class Numesis {
      * @return {String} encoded string
      */
     encode(...args) {
-        return args.map((n)=>{
+        return args.map((n) => {
             const str = String(n);
             if (/\./i.test(str)) {
                 const st = str.split(".");
@@ -86,5 +86,33 @@ class Numesis {
      * Alias for encode
      */
     e = this.encode.bind(this);
+
+    /**
+     * Decode the string to a number, not including float
+     * @param str Encoded string that will be decoded
+     * @returns decoded number
+     */
+    decode_process(str) {
+        var decoded = 0;
+        for (let i = 0; i < str.length; i++) {
+            // Get the index of the character in the charset
+            // Multiply the index by the power of the length of the charset
+            // Add the result to the decoded variable
+            decoded += this.charset.indexOf(str[i]) * Math.pow(this.charset.length, str.length - i - 1);
+        }
+        return decoded
+    }
+
+    /**
+     * Decode the string to a number, including float
+     * @param str Encoded string that will be decoded
+     * @returns decoded number
+     */
+    decode = (str) => +str.split(".").map((n) => this.decode_process(n)).join(".")
+
+    /**
+     * Alias for decode
+     */
+    d = this.decode;
 }
 module.exports = Numesis;
