@@ -4,8 +4,7 @@
   "description": "Custom Number System",
   "main": "mod.js",
   "scripts": {
-    "test": "node test.js",
-    "deno-test": "deno run test.ts"
+    "test": "nodemon t.ts"
   },
   "keywords": [
     "number",
@@ -28,5 +27,9 @@
   "author": "eru123",
   "license": "Apache-2.0",
   "repository": "https://github.com/eru123/numesis",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "nodemon": "^2.0.18",
+    "ts-node": "^10.8.1"
+  }
 }
