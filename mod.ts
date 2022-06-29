@@ -134,6 +134,23 @@ class Numesis {
 
     public trail = this.encode_trail;
     public t = this.encode_trail;
+
+    public encode_block(size: number, separator: string, ...args: Array<number | string>): string {
+        var arr = this.encode(...args).split("").reverse();
+        // if arr is not divisible by size, add charset[0] to the end until it is divisible by size
+        while (arr.length % size !== 0) arr.push(this.charset[0]);
+        var pre: string[] = arr.reverse();
+
+        // group the array into blocks of size
+        var blocks: string[] = []
+        while (pre.length > 0) blocks.push(pre.splice(0, size).join(""));
+
+        // return the blocks joined by the separator
+        return blocks.join(separator);
+    }
+
+    public block = this.encode_block
+    public b = this.encode_block
 }
 
 export default Numesis
