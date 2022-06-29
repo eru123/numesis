@@ -120,7 +120,7 @@ class Numesis {
      * @param str Encoded string that will be decoded
      * @returns decoded number
      */
-    public decode = (str: string): number => +str.split(".").map((n) => this.decode_process(n)).join(".")
+    public decode = (str: string, delimiter: string = " "): number => +str.replaceAll(delimiter, '').split(".").map((n) => this.decode_process(n)).join(".");
 
     /**
      * Alias for decode
