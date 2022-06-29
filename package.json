@@ -1,11 +1,8 @@
 {
   "name": "numesis",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Custom Number System",
   "main": "mod.js",
-  "scripts": {
-    "test": "nodemon t.ts"
-  },
   "keywords": [
     "number",
     "numbers",
@@ -26,10 +23,5 @@
   ],
   "author": "eru123",
   "license": "Apache-2.0",
-  "repository": "https://github.com/eru123/numesis",
-  "private": false,
-  "devDependencies": {
-    "nodemon": "^2.0.18",
-    "ts-node": "^10.8.1"
-  }
+  "repository": "https://github.com/eru123/numesis"
 }
