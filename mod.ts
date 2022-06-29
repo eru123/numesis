@@ -73,18 +73,14 @@ class Numesis {
     }
 
     /**
-     * Alias for encode_process
-     */
-    private ep = this.encode_process
-
-    /**
      * A public method that encodes n paramenter to custom number system
      * @param {number|string} args numbers that will be decoded
      *
      * @return {string} encoded string
      */
-    encode(...args: Array<number | string>): string {
+    public encode(...args: Array<number | string>): string {
         return args
+            // map each argument to the encode_process method
             .map((n) => {
                 const str = String(n)                    // Convert to string
                 if (/\./i.test(str)) {                   // If float
@@ -101,7 +97,35 @@ class Numesis {
     /**
      * Alias for encode
      */
-    e = this.encode.bind(this)
+    public e = this.encode;
+
+    /**
+     * Decode the string to a number, not including float
+     * @param str Encoded string that will be decoded
+     * @returns decoded number
+     */
+    private decode_process(str: string): number {
+        var decoded = 0;
+        for (let i = 0; i < str.length; i++) {
+            // Get the index of the character in the charset
+            // Multiply the index by the power of the length of the charset
+            // Add the result to the decoded variable
+            decoded += this.charset.indexOf(str[i]) * Math.pow(this.charset.length, str.length - i - 1);
+        }
+        return decoded
+    }
+
+    /**
+     * Decode the string to a number, including float
+     * @param str Encoded string that will be decoded
+     * @returns decoded number
+     */
+    public decode = (str: string): number => +str.split(".").map((n) => this.decode_process(n)).join(".")
+
+    /**
+     * Alias for decode
+     */
+    public d = this.decode;
 }
 
 export default Numesis
