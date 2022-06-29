@@ -14,6 +14,26 @@
  */
 class Numesis {
     /**
+     * Binary character set - 01
+     */
+     static BIN = '01';
+     /**
+      * Octal character set - 01234567
+      */
+     static OCT = '01234567';
+     /**
+      * Decimal character set - 0123456789
+      */
+     static DEC = '0123456789';
+     /**
+      * Hexadecimal character set - 0123456789ABCDEF
+      */
+     static HEX = '0123456789ABCDEF';
+     /**
+      * Default character set - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+      */
+     static DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    /**
      * A non-duplicate character set, that will be use in creating new number system
      * @type {Set<string>}
      */
@@ -21,7 +41,7 @@ class Numesis {
     /**
      * @param {String} chartset A non-duplicate character set, that will be use in creating new number system
      */
-    constructor(chartset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"){
+    constructor(chartset = Numesis.DEFAULT){
         this.charset = Array.from(new Set(chartset.split("")));
     }
     /**
