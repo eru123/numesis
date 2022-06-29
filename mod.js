@@ -67,15 +67,15 @@ class Numesis {
      * @return {string} encoded string
      */
     encode_process(number, current = "") {
-        number = parseInt("" + number)                      // Convert to integer
+        number = parseInt("" + number)              // Convert to integer
         const length = this.charset.length          // Get the length of the charset
         const lastIndex = length - 1                // Get the last index of the charset
-        const set = this.charset             // Get the charset
+        const set = this.charset                    // Get the charset
         if (number <= lastIndex) return "" + (set[number] + current); // If the number is less than the length of the charset, return the character
         const m = number % length;                  // Get the remainder of the number
         current = m > 0 && m <= length ? set[m] + current : set[0] + current // If the remainder is greater than 0 and less than the length of the charset, return the character
         const d = parseInt((number / length) + ""); // Get the division of the number
-        return this.encode_process(d, current)              // Recursive call
+        return this.encode_process(d, current)      // Recursive call
     }
 
     /**
