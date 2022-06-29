@@ -7,7 +7,7 @@
  * - Browser
  * - Typescript
  * @author Jericho Aquino
- * @version 1.0.2
+ * @version 1.1.0
  * @license Apache-2.0
  * @see {@link https://github.com/eru123/numesis} Github Repository
  * @see {@link https://www.npmjs.com/package/numesis} NPM Package
@@ -15,27 +15,27 @@
 class Numesis {
 
     /**
-     * Binary character set - 01
+     * Binary character set
      */
     public static readonly BIN = '01';
 
     /**
-     * Octal character set - 01234567
+     * Octal character set
      */
     public static readonly OCT = '01234567';
 
     /**
-     * Decimal character set - 0123456789
+     * Decimal character set
      */
     public static readonly DEC = '0123456789';
 
     /**
-     * Hexadecimal character set - 0123456789ABCDEF
+     * Hexadecimal character set
      */
     public static readonly HEX = '0123456789ABCDEF';
 
     /**
-     * Default character set - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+     * Default character set
      */
     public static readonly DEFAULT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -101,8 +101,8 @@ class Numesis {
 
     /**
      * Decode the string to a number, not including float
-     * @param str Encoded string that will be decoded
-     * @returns decoded number
+     * @param {string} str Encoded string that will be decoded
+     * @returns {number} decoded number
      */
     private decode_process(str: string): number {
         var decoded = 0;
@@ -117,8 +117,9 @@ class Numesis {
 
     /**
      * Decode the string to a number, including float
-     * @param str Encoded string that will be decoded
-     * @returns decoded number
+     * @param {string} str Encoded string that will be decoded
+     * @param {string} delimiter The encoded string delimiter, commonly used in decoding result `Numesis.block`
+     * @returns {number} decoded number
      */
     public decode = (str: string, delimiter: string = " "): number => +str.replaceAll(delimiter, '').split(".").map((n) => this.decode_process(n)).join(".");
 
@@ -127,14 +128,42 @@ class Numesis {
      */
     public d = this.decode;
 
+    /**
+     * Expects the length of the return value is equal to len parameter
+     * if the length of the encoded string is less than the expected length, it will 
+     * prefix with a character equivalent to the first character of the charset until 
+     * the expected length is met, if the length of the encoded string is greater than
+     * the expected length no trailing characters will be added
+     * @param {number} len The expected length of the encoded string
+     * @param {Array<number|string>} args The numbers that will be encoded
+     * @returns {string} encoded string
+     */
     public encode_trail(len: number, ...args: Array<number | string>): string {
         const encoded = this.encode(...args);
         return encoded.length > len ? encoded : encoded.padStart(len, this.charset[0]);
     }
 
+    /**
+     * Alias for encode_trail
+     */
     public trail = this.encode_trail;
+
+    /**
+     * Alias for encode_trail
+     */
     public t = this.encode_trail;
 
+    /**
+     * Return encoded message in a block of characters separated by a delimiter.
+     * Encoded message must be a multiple of the length of the separator, if not,
+     * the first block of characters will be prefix with a character equivalent to
+     * the first character of the charset until the length of the encoded message is
+     * a multiple of the length of the expected size per block.
+     * @param {number} size The expected length of each block
+     * @param {string} separator The separator between each block 
+     * @param {Array<number|string>} args The numbers that will be encoded 
+     * @returns encoded string
+     */
     public encode_block(size: number, separator: string, ...args: Array<number | string>): string {
         var arr = this.encode(...args).split("").reverse();
         // if arr is not divisible by size, add charset[0] to the end until it is divisible by size
@@ -149,7 +178,14 @@ class Numesis {
         return blocks.join(separator);
     }
 
+    /**
+     * Alias for encode_block
+     */
     public block = this.encode_block
+
+    /**
+     * Alias for encode_block
+     */
     public b = this.encode_block
 }
 
