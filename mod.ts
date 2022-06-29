@@ -105,7 +105,7 @@ class Numesis {
      * @returns {number} decoded number
      */
     private decode_process(str: string): number {
-        var decoded = 0;
+        let decoded = 0;
         for (let i = 0; i < str.length; i++) {
             // Get the index of the character in the charset
             // Multiply the index by the power of the length of the charset
@@ -165,13 +165,13 @@ class Numesis {
      * @returns encoded string
      */
     public encode_block(size: number, separator: string, ...args: Array<number | string>): string {
-        var arr = this.encode(...args).split("").reverse();
+        const arr = this.encode(...args).split("").reverse();
         // if arr is not divisible by size, add charset[0] to the end until it is divisible by size
         while (arr.length % size !== 0) arr.push(this.charset[0]);
-        var pre: string[] = arr.reverse();
+        const pre: string[] = arr.reverse();
 
         // group the array into blocks of size
-        var blocks: string[] = []
+        const blocks: string[] = []
         while (pre.length > 0) blocks.push(pre.splice(0, size).join(""));
 
         // return the blocks joined by the separator
